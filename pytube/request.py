@@ -5,7 +5,7 @@ from pytube.compat import urlopen
 
 def get(
     url=None, headers=False,
-    streaming=False, chunk_size=1024,
+    streaming=False, chunk_size=1024*50,
 ):
     """Send an http GET request.
 
@@ -31,7 +31,7 @@ def get(
     )
 
 
-def stream_response(response, chunk_size=1024):
+def stream_response(response, chunk_size=1024*50):
     """Read the response in chunks."""
     while True:
         buf = response.read(chunk_size)
