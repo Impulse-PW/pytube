@@ -225,7 +225,8 @@ class Stream(object):
                 # reduce the (bytes) remainder by the length of the chunk.
                 bytes_remaining -= len(chunk)
                 # send to the on_progress callback.
-                self.on_progress(chunk, fh, bytes_remaining)
+                if (self.filesize - bytes_remaining) % (1024*200) == 0:
+                    self.on_progress(chunk, fh, bytes_remaining)
         self.on_complete(fh)
         return fp
 
