@@ -221,7 +221,7 @@ class Stream(object):
         )
 
         with open(fp, 'wb') as fh:
-            for chunk in request.get(self.url, chunk_size=1024*200, streaming=True):
+            for chunk in request.get(self.url, chunk_size=1024*200):
                 # reduce the (bytes) remainder by the length of the chunk.
                 bytes_remaining -= len(chunk)
                 # send to the on_progress callback.
